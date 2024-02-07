@@ -5,29 +5,102 @@
 [node name="Settings" type="CanvasLayer"]
 script = ExtResource("1_xdw3x")
 
+[node name="Settings" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -236.0
+offset_top = 40.0
+offset_right = 236.0
+offset_bottom = 109.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "Settings
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Sound" type="Label" parent="."]
-offset_left = 264.0
-offset_top = 152.0
-offset_right = 400.0
-offset_bottom = 216.0
+anchors_preset = -1
+anchor_left = 0.206
+anchor_top = 0.311
+anchor_right = 0.206
+anchor_bottom = 0.311
+offset_left = 0.319977
+offset_top = 0.0799866
+offset_right = 136.32
+offset_bottom = 64.08
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 30
 text = "Sound:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SoundBar" type="ProgressBar" parent="."]
-offset_left = 400.0
-offset_top = 160.0
-offset_right = 1032.0
-offset_bottom = 224.0
+[node name="SoundPercent" type="Label" parent="Sound"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 8.0
+offset_right = 768.0
+offset_bottom = 72.0
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SoundBar" type="ProgressBar" parent="Sound"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 8.0
+offset_right = 768.0
+offset_bottom = 72.0
 theme_override_font_sizes/font_size = 30
 step = 1.0
 value = 50.0
 rounded = true
+show_percentage = false
 
-[node name="HSlider" type="HSlider" parent="SoundBar"]
-offset_left = 304.0
-offset_top = 24.0
-offset_right = 312.0
-offset_bottom = 40.0
+[node name="SoundLevel" type="HSlider" parent="Sound/SoundBar"]
+show_behind_parent = true
+visibility_layer = 0
+layout_mode = 0
+offset_right = 632.0
+offset_bottom = 64.0
+scrollable = false
+tick_count = 100
+ticks_on_borders = true
+
+[node name="Resolution" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.175
+anchor_top = 0.544
+anchor_right = 0.175
+anchor_bottom = 0.544
+offset_left = -1.52588e-05
+offset_top = 0.319977
+offset_right = 161.0
+offset_bottom = 64.32
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Resolution:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResolutionList" type="OptionButton" parent="Resolution"]
+layout_mode = 0
+offset_left = 176.0
+offset_right = 808.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 30
+text_overrun_behavior = 3
+text_direction = 1
+item_count = 2
+selected = 0
+allow_reselect = true
+popup/item_0/text = "720 x 1280"
+popup/item_0/id = 0
+popup/item_1/text = "1920 x 1080"
+popup/item_1/id = 1
+
+[connection signal="value_changed" from="Sound/SoundBar/SoundLevel" to="." method="_on_sound_level_value_changed"]
+[connection signal="item_selected" from="Resolution/ResolutionList" to="." method="_on_option_button_item_selected"]
