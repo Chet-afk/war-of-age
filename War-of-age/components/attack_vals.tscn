@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://rpvwcnq4wxke"]
 
-[ext_resource type="Script" path="res://components/attack_component.gd" id="1_gbht1"]
+[ext_resource type="Script" path="res://components/attack_vals.gd" id="1_k5bhf"]
 
-[node name="AttackComponent" type="Node2D"]
-script = ExtResource("1_gbht1")
+[node name="AttackVals" type="Node2D"]
+script = ExtResource("1_k5bhf")
 
 [node name="Cooldown" type="Timer" parent="."]
 

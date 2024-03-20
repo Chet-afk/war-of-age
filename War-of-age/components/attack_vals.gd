@@ -5,8 +5,8 @@ signal attack
 @export var base_damage: int
 var modifiers: Array = []
 
-func add_modifiers(modifiers):
-	pass
+func add_modifier(modifier):
+	modifiers.append(modifier)
 
 func deal_damage() -> int:
 	# Apply modifiers before returning damage
